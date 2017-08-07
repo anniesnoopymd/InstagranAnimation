@@ -26,6 +26,8 @@ html, body{
   ballDown 0.2s 1.5s ease-in forwards,
   cameraIn 0.5s 1.7s forwards;
   /* animation-fill-mode: forwards; */
+
+  perspective: 500px;
 }
 @keyframes ballUp{
   0%{
@@ -155,8 +157,8 @@ html, body{
   }
 }
 .picture{
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 500px;
   border: 10px solid #fff;
   background-color: #ccc;
   border-bottom: 20px solid #fff;
@@ -165,16 +167,77 @@ html, body{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  animation: pictureIn 1s 3.5s backwards;
+  animation:
+    pictureIn 1s 3.5s backwards,
+    pictureFlip 1s 4.5s forwards;
+
+  /* overflow: hidden; */
+  transition: all 0.3s;
 }
+/* .picture:hover{
+  width: 500px;
+  height: 500px;
+
+} */
 
 @keyframes pictureIn{
   0%{
     height: 0;
     width: 120px;
+    top: 100%;
+    transform: translate(-50%,0);
+    opacity: 0;
   }
   100%{
     height: 120px;
     width: 120px;
+    top: 100%;
+    transform: translate(-50%,0);
   }
+}
+
+@keyframes pictureFlip{
+  0%{
+    height: 120px;
+    width: 120px;
+    top: 100%;
+    transform: translate(-50%,0) rotateX(0deg);
+
+  }
+  100%{
+    height: 250px;
+    width: 250px;
+    top: 50%;
+    transform: translate(-100%,-100%) rotateX(360deg);
+  }
+}
+.picture .imgBox{
+  animation: showImg 1s 5s backwards;
+  height: 300px;
+  overflow: hidden;
+}
+
+@keyframes showImg{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.picture .imgBox img{
+  width: 100%;
+}
+
+.picture h1{
+  margin-top: -40px;
+  font-size: 24px;
+  line-height: 40px;
+  color: #333;
+}
+.picture h3{
+  margin: 0;
+  font-size: 18px;
+
+  color: #333;
 }
