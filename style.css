@@ -89,6 +89,10 @@ html, body{
   10%{
     opacity: 1;
   }
+  80%{
+    width: 120px;
+    height: 120px;
+  }
   100%{
     width: 100px;
     height: 100px;
@@ -102,4 +106,75 @@ html, body{
   border-radius: 50%;
   margin-top: -80px;
   margin-left: 140px;
+
+  animation: flashlightIn 0.3s 2.2s backwards;
+}
+
+@keyframes flashlightIn{
+  0%{
+    transform: scale(0);
+  }
+  80%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+.flashlight:after{
+  content: "";
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(256,256,256,0.5);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  animation: flash 0.3s 3s;
+  opacity: 0;
+}
+
+@keyframes flash{
+  0%{
+    opacity: 0;
+  }
+  25%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.picture{
+  width: 250px;
+  height: 250px;
+  border: 10px solid #fff;
+  background-color: #ccc;
+  border-bottom: 20px solid #fff;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  animation: pictureIn 1s 3.5s backwards;
+}
+
+@keyframes pictureIn{
+  0%{
+    height: 0;
+    width: 120px;
+  }
+  100%{
+    height: 120px;
+    width: 120px;
+  }
 }
